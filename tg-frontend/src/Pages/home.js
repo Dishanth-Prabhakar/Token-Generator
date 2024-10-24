@@ -13,10 +13,37 @@ function Home() {
     const [generatedTokens, setGeneratedtoken] = useState({ blue: [], red: [] })
     const [splitBlueTokens, setSplitBlueTokens] = useState([]);
     const [splitRedTokens, setSplitRedTokens] = useState([]);
+    const [formError, setFormError] = useState('');
+    const [blueError, setBlueError] = useState('');
+    const [redError, setRedError] = useState('');
 
     // To generate the tokens 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (blueToken === "" || bluePrefix === "" || redToken === "" || redPrefix === "") {
+            setFormError("Number of tokens & prefix fields are mandatory to fill");
+            return;
+        } else {
+            setFormError('');
+        }
+
+        if (bluePerRow > 8) {
+            setBlueError("The blue tokens per row should less than or equal to 8");
+            return;
+        } else {
+            setBlueError('');
+        }
+
+        if (redPerRow > 8) {
+            setRedError("The red tokens per row should less than or equal to 8");
+            return;
+        } else {
+            setRedError('')
+        }
+
+        const bluePerRowValue = bluePerRow ? Number(bluePerRow) : 8;
+        const redPerRowValue = redPerRow ? Number(redPerRow) : 8;
 
         const bluetok = Number(blueToken)
         const bluetokenlst = []
@@ -32,10 +59,10 @@ function Home() {
 
         setGeneratedtoken({ blue: bluetokenlst, red: redtokenlst });
 
-        const blueTokensSplit = splitTokensIntoRows(bluetokenlst, Number(bluePerRow));
+        const blueTokensSplit = splitTokensIntoRows(bluetokenlst, Number(bluePerRowValue));
         setSplitBlueTokens(blueTokensSplit);
 
-        const redTokensSplit = splitTokensIntoRows(redtokenlst, Number(redPerRow));
+        const redTokensSplit = splitTokensIntoRows(redtokenlst, Number(redPerRowValue));
         setSplitRedTokens(redTokensSplit);
     };
 
@@ -56,12 +83,20 @@ function Home() {
         setRedToken('');
         setRedPrefix('');
         setRedPerRow('');
-        setGeneratedtoken({blue: [], red: []});
+        setGeneratedtoken({ blue: [], red: [] });
+        setBlueError('');
+        setRedError('')
+        setFormError('');
     };
 
     return (
         <div>
             <h2>Token Generator Application</h2>
+            <div>
+                <span style={{ color: 'red' }}>
+                    <h5>{formError}</h5>
+                </span>
+            </div>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Number of blue tokens: </label>
@@ -80,7 +115,11 @@ function Home() {
                     <input type='number'
                         value={bluePerRow}
                         onChange={(e) => setBluePerRow(e.target.value)} />
+                    <span style={{ color: 'red' }}>
+                        <h5>{blueError}</h5>
+                    </span>
                 </div>
+                
                 <div>
                     <label>Number of red tokens: </label>
                     <input type='number'
@@ -98,7 +137,11 @@ function Home() {
                     <input type='number'
                         value={redPerRow}
                         onChange={(e) => setRedPerRow(e.target.value)} />
+                    <span style={{ color: 'red' }}>
+                        <h5>{redError}</h5>
+                    </span>
                 </div>
+
                 <div>
                     <button type="submit">Generate</button>
                     <button onClick={handleClear}>Clear</button>
