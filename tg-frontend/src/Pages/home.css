@@ -1,0 +1,119 @@
+/* to the whole page */
+* {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+/* to the page */
+.container {
+    text-align: center;
+}
+
+/* Styling the app heading */
+.app-heading{
+    background-color: #F3CD86 ; /* #F3CD86 #B2DAE5 */
+    margin: 10px 75px 15px 75px ;
+    padding: 10px;
+}
+
+/* styling the form */
+form {
+    width: 100%;
+}
+
+/* Styling the input all fields */
+input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 18%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 8px 15px 8px 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Styling the labels (form labels) */
+label{
+    font-size: 17px;
+}
+
+/* to add blue color to the text */
+.bluecolor{
+    color: blue;
+}
+
+/* to add red color to the text */
+.redcolor{
+    color: red;
+}
+
+/* Styling the buttons - general */
+button{
+    font-size: 18px;
+    padding: 10px 25px;
+    cursor: pointer;
+    margin-right: 13px;
+}
+
+/* Styling Generate button */
+.generatebtn{
+    border: 1px solid #008000;
+    border-radius: 5px;   
+    background-color: #008000;
+    color: white;
+}
+
+.generatebtn:hover{
+    border: 1px solid #4F7942;
+    border-radius: 5px;   
+    background-color: #4F7942;
+    color: white;
+}
+
+/* Styling Clear button */
+.clearbtn {
+    border: 1px solid #FF0000;
+    border-radius: 5px;   
+    background-color: #FF0000;
+    color: white;
+}
+
+.clearbtn:hover {  
+    border: 1px solid #EE4B2B;
+    border-radius: 5px;      
+    background-color: #EE4B2B;
+    color: white; 
+}
+
+/* Styling Token container */
+.token-container{
+    margin-top: 40px;
+}
+
+/* Styling Blue tokens */
+.bluetoken-box {
+    background-color: blue;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+    min-width: 50px; 
+    min-height: 25px; 
+}
+
+/* Styling Red tokens */
+.redtoken-box {
+    background-color: red;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+    min-width: 50px; 
+    min-height: 25px; 
+}
